@@ -37,10 +37,11 @@ class App extends Component {
     }
 
     deleteToDo(index) {
-       const todos = this.state.todos.filter(function(e){
-         return e.description !== 'Walk the cat';;
+      console.log(index);
+       const todos = this.state.todos.filter(function(e, eIndex){
+         console.log(e.index);
+         return eIndex !== index;
        });
-       const todo = todos[index];
        this.setState({todos: todos});
     }
    render() {
