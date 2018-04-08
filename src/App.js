@@ -37,7 +37,9 @@ class App extends Component {
     }
 
     deleteToDo(index) {
-       const todos = this.state.todos.filter();
+       const todos = this.state.todos.filter(function(e){
+         return e.description !== 'Walk the cat';;
+       });
        const todo = todos[index];
        this.setState({todos: todos});
     }
@@ -46,7 +48,7 @@ class App extends Component {
        <div className="App">
         <ul>
         { this.state.todos.map( (todo, index) =>
-          <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } deleteToDo={ this.deleteToDo }
+          <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } deleteToDo={ () => this.deleteToDo(index) }
 />
          )}
         </ul>
